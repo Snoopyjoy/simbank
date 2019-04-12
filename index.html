@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>simbank</title>
+  </head>
+  <body>
+    <script>
+      (function(doc,win) {
+        var docEl = doc.documentElement,
+          resizeEvent = 'orientationchange' in win ? 'orientationchang' : 'resize';
+        let htmlDom = doc.getElementsByTagName('html')[0];
+        var rescale = function () {
+          win.clientWidth = docEl.clientWidth;
+          if (!win.clientWidth) return;
+          htmlDom.style.fontSize = 20 * (win.clientWidth / 750) + 'px';
+        };
+        if (!doc.addEventListener) return rescale();
+        win.addEventListener(resizeEvent, rescale, false);
+        doc.addEventListener('DOMContentLoaded', rescale, false);
+      })(document, window);
+    </script>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
